@@ -1,0 +1,20 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="vault-form">
+  <div class="row">
+    <label>Title
+      <input type="text" formControlName="title" required />
+    </label>
+    <label>Username
+      <input type="text" formControlName="username" required />
+    </label>
+  </div>
+  <label>URL
+    <input type="url" formControlName="url" placeholder="https://" />
+  </label>
+  <label>Secret
+    <input type="text" formControlName="secret" placeholder="Leave blank to keep current secret" />
+  </label>
+  <div class="actions">
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+  </div>
+</form>

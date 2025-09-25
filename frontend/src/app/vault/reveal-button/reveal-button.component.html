@@ -1,0 +1,7 @@
+<div class="reveal">
+  <button type="button" (click)="toggleReveal()" [disabled]="loading">
+    {{ revealed ? 'Hide' : 'Reveal' }}
+  </button>
+  <span class="secret" *ngIf="revealed && secret">{{ secret }}</span>
+  <span class="error" *ngIf="error">{{ error }}</span>
+</div>

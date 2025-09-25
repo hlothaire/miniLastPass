@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <a routerLink="/vault" class="brand">Vault</a>
+  <div class="spacer"></div>
+  <ng-container *ngIf="profile$ | async as profile; else guest">
+    <span class="user">{{ profile.email }}</span>
+    <button type="button" (click)="logout()">Logout</button>
+  </ng-container>
+  <ng-template #guest>
+    <a routerLink="/login">Login</a>
+    <a routerLink="/signup">Sign up</a>
+  </ng-template>
+</nav>
+<main class="content">
+  <router-outlet></router-outlet>
+</main>

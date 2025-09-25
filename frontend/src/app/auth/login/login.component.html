@@ -1,0 +1,23 @@
+<section class="auth-card">
+  <h1>Log in</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Email
+      <input type="email" formControlName="email" placeholder="you@example.com" />
+    </label>
+    <div class="error" *ngIf="form.controls.email.invalid && form.controls.email.touched">
+      Please enter a valid email.
+    </div>
+
+    <label>Password
+      <input type="password" formControlName="password" placeholder="••••••••••••" />
+    </label>
+    <div class="error" *ngIf="form.controls.password.invalid && form.controls.password.touched">
+      Password must be at least 12 characters.
+    </div>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <button type="submit">Sign in</button>
+  </form>
+  <p class="switch">Need an account? <a routerLink="/signup">Sign up</a></p>
+</section>

@@ -1,0 +1,52 @@
+<section class="vault">
+  <header>
+    <h1>Your vault</h1>
+    <button type="button" (click)="openCreate()">Add item</button>
+  </header>
+
+  <p class="message" *ngIf="message">{{ message }}</p>
+
+  <app-vault-item-form
+    *ngIf="creating"
+    (cancelled)="cancel()"
+    (saved)="saveCreate($event)"
+  ></app-vault-item-form>
+
+  <table *ngIf="items.length > 0" class="vault-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Username</th>
+        <th>URL</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ item.title }}</td>
+        <td>{{ item.username }}</td>
+        <td>
+          <a *ngIf="item.url" [href]="item.url" target="_blank" rel="noopener">{{ item.url }}</a>
+        </td>
+        <td>{{ item.createdAt | date: 'short' }}</td>
+        <td>{{ item.updatedAt | date: 'short' }}</td>
+        <td class="actions">
+          <app-reveal-button [itemId]="item.id"></app-reveal-button>
+          <button type="button" (click)="startEdit(item)">Edit</button>
+          <button type="button" (click)="delete(item)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="items.length === 0" class="empty">No items stored yet.</p>
+
+  <app-vault-item-form
+    *ngIf="editing"
+    [item]="editing"
+    (cancelled)="cancel()"
+    (saved)="saveEdit($event)"
+  ></app-vault-item-form>
+</section>

@@ -1,0 +1,22 @@
+.reveal {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+
+  button {
+    border: none;
+    background: #f97316;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+
+  .secret {
+    font-family: 'Fira Mono', monospace;
+  }
+
+  .error {
+    color: #dc2626;
+  }
+}
